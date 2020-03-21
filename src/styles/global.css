@@ -1,3 +1,7 @@
 html {
-    background-color: lavenderblush;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+body {
+    margin: 0;
   }
