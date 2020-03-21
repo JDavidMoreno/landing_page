@@ -5,6 +5,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
+import Divider from '@material-ui/core/Divider';
+
 
 import { ThemeProvider } from "@material-ui/core/styles";
 
@@ -33,7 +35,7 @@ export default class App extends React.Component {
                         </Grid>
                     </Grid>
                 </Image>
-                <Section color="#e3d49b">
+                <Section color="#e3d49b" align="center">
                     <strong>
                         <Typography variant="h4">
                             Вы в поисках своего призвания, предназначения?<br/>
@@ -43,6 +45,8 @@ export default class App extends React.Component {
                         </Typography>
                     </strong>
                     <br />
+                    <Divider />
+
                     <Typography variant="body1">
                         Доставляет ли текущая работа вам удовольствие? Вы с радостью, бодро и легко просыпаетесь утром, полны энергии и новыми идеями, торопитесь на работу, чтобы поскорее взяться за дела, которые вчера неохотно оставили вечером? Вы испытываете состояние счастья на работе, сердце замирает в предвкушении новых задач, за спиной вырастают крылья в ощущении того, что вы со всем справитесь и что именно об этом мечтали? Если да, то я вас сердечно поздравляю — вы обрели своё призвание. Если пока нет, то приглашаю присоединиться к курсу на тему поиска своего призвания под названием "Мечтай и делай. Как найти своё призвание и начать получать удовольствие от работы".<br/>
                         Я нашла своё призвание и хорошо знаю, что чувствуют те, кто его пока не обрёл и поэтому очень хочу помочь в поисках своего предназначения всем, кому это сейчас важно. Я знаю как искать, как составить план и как решиться поменять кардинально свою профессиональную жизнь. Жду вас на курсе!

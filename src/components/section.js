@@ -1,5 +1,6 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
+import Box from '@material-ui/core/Box';
 
 
 
@@ -7,14 +8,21 @@ export default class Section extends React.Component {
 
     render() {
         let section_style = {
-            padding: '2rem',
+            padding: '4rem 0',
             backgroundColor: this.props.color,
+            textAlign: this.props.align ? this.props.align : 'left',
+
         };
+
 
         return (
             <div style={section_style}>
-                <Container maxWidth="lg">
-                    { this.props.children }
+
+                {/* <Container  p={{xs: 0, sm: 4, md: 2}}> */}
+                <Container  maxWidth="md" >
+                    <Box p={{xs: 0, sm: 4}}>
+                        { this.props.children }
+                    </Box>
                 </Container>
             </div>
         )
