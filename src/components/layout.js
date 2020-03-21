@@ -6,11 +6,8 @@ export default class Layout extends React.Component {
     render() {
         return (
             <div>
-                <Container>
+                <Container maxWidth="lg">
                     { this.props.children }
-                    <div style={{height: 100}}>
-
-                    </div>
                 </Container>
                 <Footer content="Made with Love from Ronda" />
             </div>

@@ -1,3 +1,11 @@
 .img_container {
-    /* background-image: url('../../static/flying.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1rem;
+}
+
+.img_contained {
+    width: 100vw;
+    visibility: hidden;
 }
