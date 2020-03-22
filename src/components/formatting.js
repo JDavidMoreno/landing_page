@@ -38,6 +38,7 @@ export function ImgParagraph(props) {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         { title }
+                        ss
                         <img src={ props.src || icon } alt={ props.alt || "icon" } style={{maxHeight: 30, maxWidth: 30, marginBottom: "1rem"}} />
                         <Typography variant="body1" gutterBottom={true} className={ styles.format_image_p }>
                             { props.children } 
