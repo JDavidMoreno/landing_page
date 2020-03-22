@@ -13,7 +13,7 @@ export default class Image extends React.Component {
         return (
                 <div style={ divStyles } className={ imageStyles.img_container }>
                     { this.props.children }
-                    <img src={ this.props.src } className={ imageStyles.img_contained } style={{maxHeight: `${ window.innerHeight / 10 + 'px' }`}} />
+                    <img src={ this.props.src } alt={ this.props.alt || "header image" } className={ imageStyles.img_contained } style={{maxHeight: `${ window.innerHeight / 10 + 'px' }`}} />
                 </div>            
         )
     }

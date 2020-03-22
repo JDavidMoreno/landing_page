@@ -1,0 +1,13 @@
+.title {
+    font-weight: 600 !important;
+}
+
+.format_image_p {
+    margin: 0 !important;
+}
+
+.img_fit {
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+}

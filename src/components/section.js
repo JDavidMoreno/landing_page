@@ -14,12 +14,11 @@ export default class Section extends React.Component {
 
         };
 
-
         return (
             <div style={section_style}>
 
                 {/* <Container  p={{xs: 0, sm: 4, md: 2}}> */}
-                <Container  maxWidth="md" >
+                <Container  maxWidth="lg" >
                     <Box p={{xs: 0, sm: 4}}>
                         { this.props.children }
                     </Box>
