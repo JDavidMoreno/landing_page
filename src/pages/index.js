@@ -114,7 +114,7 @@ export default class App extends React.Component {
                 </Section>
                 <Section color="#d0d4a2" align="center">
                     <Title variant="h4" align="center">
-                        Детали программы
+                        Деталиss программы
                     </Title>
                     <Grid container spacing={4}>
                         <Grid item sm={12} md={4}>
