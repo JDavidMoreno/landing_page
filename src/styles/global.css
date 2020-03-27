@@ -9,3 +9,7 @@ body {
 p {
   margin-top: 2rem !important;
 }
+
+ul {
+  padding-inline-start: 1rem !important;
+}
