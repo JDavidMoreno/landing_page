@@ -9,10 +9,11 @@ import Divider from '@material-ui/core/Divider';
 
 import { ThemeProvider } from "@material-ui/core/styles";
 
-import Footer from "../components/footer";
-import Section from "../components/section";
-import Image from "../components/image";
-import { Title, ImgParagraph, ImgFit } from "../components/formatting";
+import Footer from "../components/Footer";
+import Section from "../components/Section";
+import Image from "../components/Image";
+import Sandwitch from "../components/Sandwitch";
+import { Title, ImgParagraph, ImgFit } from "../components/Formatting";
 
 
 
@@ -85,6 +86,7 @@ export default class App extends React.Component {
                         </Grid>
                     </Grid>
                 </Section>
+                {/* Como funciona */}
                 <Section color="#e3d49b" align="left">
                     <Title variant="h4" align="center">Kak eto pabotaet?</Title>
                     <br/>
@@ -112,6 +114,7 @@ export default class App extends React.Component {
                         </Grid>
                     </Grid>
                 </Section>
+                {/* Detalles */}
                 <Section color="#d0d4a2" align="center">
                     <Title variant="h4" align="center">
                         Детали программы
@@ -137,16 +140,28 @@ export default class App extends React.Component {
                         </Grid>
                     </Grid>
                 </Section>
+                {/* Bocadillos */}
                 <Section color="#e3d49b" align="left">
                     <Grid container spacing={4}>
                         <Grid item sm={12} md={6}>
-
+                            <Sandwitch name="Maria">
+                                Я очень благодарна курсу Анны за то, что я теперь четко понимаю то, что мне нужно искать, на чем фокусировать внимание, какие события притягивать. А ведь это 50% успеха. Причём 4 вектора моего развития стали понятны уже на втором занятии. А уже к последней встрече я точно понимала, какой из них самый сильный. Поразительно то, что в выбранном направлении я уверена на 100%. Почему? Потому что, благодаря этому курсу, я научилась слышать своё сердце, а его, как говориться, не обманешь. Аня, то, что ты даришь людям - бесценно! Спасибо!
+                            </Sandwitch>
+                            <Sandwitch>
+                                
+                            </Sandwitch>
                         </Grid>
                         <Grid item sm={12} md={6}>
-
+                            <Sandwitch>
+                                
+                            </Sandwitch>
+                            <Sandwitch>
+                                
+                            </Sandwitch>
                         </Grid>
                     </Grid>
                 </Section>
+                {/*  */}
                 <Section color="#d0d4a2" align="center">
                     <Title>
                         Ведущая курса 
