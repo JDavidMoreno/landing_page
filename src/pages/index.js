@@ -6,6 +6,10 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Divider from '@material-ui/core/Divider';
 import Box from "@material-ui/core/Box";
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -16,6 +20,9 @@ import Image from "../components/Image";
 import Sandwitch from "../components/Sandwitch";
 import CardButton from "../components/CarButton";
 import { Title, ImgParagraph, ImgFit } from "../components/Formatting";
+import Parallax from "../components/Parallax";
+import FormContact from "../containers/FormContact";
+import LightCheckBox from "../components/LightCheckbox";
 
 
 
@@ -319,15 +326,79 @@ export default class App extends React.Component {
                             </CardButton>
                         </Grid>
                     </Grid>
-                    
-
                 </Section>
-                <Footer content="Made with Love from Ronda" />
-                    
-      
+                <Parallax src={ child } filter="rgba(97, 84, 79, 0.79)">
+                    <Box textAlign="center" p="3rem">
+                        <Title>
+                        Запишитесь на курс прямо сейчас!
+                        </Title>
+                        <Typography variant="body1">
+                            Торопитесь! Количество мест ограничено!!!<br />
+                            Буду рада нашей встрече!
+                        </Typography>
+                        <FormContact>
+                            <div>
+                                <TextField id="outlined-basic" rowsMax="1" label="Outlined" variant="outlined" />
+                            </div>
+                            <div>
+                                <TextField id="outlined-basic" rowsMax="1" label="Outlined" variant="outlined" />
+                            </div>
+                            <div>
+                                <TextField id="outlined-basic" rowsMax="1" label="Outlined" variant="outlined" />
+                            </div>
+                            <div>
+                                <Typography variant="body2">
+                                    Ваша программа
+                                </Typography>
+                                <div>
+                                    <FormControlLabel className=".form_margin"
+                                        control={<LightCheckBox  name="gilad" />}
+                                        label="Option 1"
+                                    />
+                                </div>
+                                {/* <FormControlLabel
+                                    control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
+                                    label="Gilad Gray"
+                                /> */}
+                                <div>
+                                    <FormControlLabel
+                                        control={<LightCheckBox  name="jason" />}
+                                        label="Option 2"
+                                    />
+                                </div>
+                                <div>
+                                    <FormControlLabel
+                                        control={<LightCheckBox  name="antoine" />}
+                                        label="Option 3"
+                                    />
+                                </div>
+                            </div>
+                            <div>
+                                <Button variant="contained" color="primary">My Button</Button> 
+                            </div>
+                            <Typography variant="body2">
+                                Нажимая на кнопку "Отправить заявку" вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности.
+                            </Typography>
+
+                        </FormContact>
+                    </Box>
+                </Parallax>
+                <Section color="#d0d4a2" align="center">
+                    <Title variant="h4" align="center">
+                        <Box paddingBottom="3rem">
+                        Остались вопросы?<br />
+                        Пишите/звоните мне :)<br />
+                        можно в WhatsApp<br />
+                        +7 965 283 14 32<br />
+                        info@anna-osina.ru<br />
+                        </Box>
+                    </Title>
+                    <Typography variant="body1">
+                    Присоединяйтесь к нам в социальных сетях - там много<br /> интересного и позитивного!
+                    </Typography>
+                </Section>
+                <Footer content="Made with &#128156;from Ronda" />
             </ThemeProvider>
         )
     }
 }
-
-

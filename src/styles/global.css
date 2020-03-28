@@ -13,3 +13,17 @@ p {
 ul {
   padding-inline-start: 1rem !important;
 }
+
+.MuiInputBase-root {
+  margin: 0.5rem 0 0.5rem 0;
+  background-color: white;
+}
+
+.MuiInputLabel-outlined.Mui-focused {
+  color: white !important;
+
+}
+
+input {
+  color: white;
+}

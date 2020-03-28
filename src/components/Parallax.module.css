@@ -1,0 +1,27 @@
+
+.parallax_img {
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 2rem;
+}
+
+.parallax_filter {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.parallax_cont {
+    position: relative;
+    color: white;
+}
+
+.parallax_test {
+    position: relative;
+    z-index: 2;
+}
