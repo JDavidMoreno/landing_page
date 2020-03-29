@@ -15,14 +15,13 @@ ul {
 }
 
 .MuiInputBase-root {
-  margin: 0.5rem 0 0.5rem 0;
   background-color: white;
 }
 
-.MuiInputLabel-outlined.Mui-focused {
-  color: white !important;
+/* .MuiInputLabel-outlined.Mui-focused {
+  color: black !important;
 
-}
+} */
 
 input {
   color: white;

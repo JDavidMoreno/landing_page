@@ -15,7 +15,7 @@ import icon from "../../static/checked.svg"
 export function Title(props) {
     return (
         <ThemeProvider theme={ theme }>
-            <Typography variant={ props.variant || "h3" } gutterBottom={true} className={ styles.title } align={ props.align === 'center' ? 'center' : '' } >
+            <Typography variant={ props.variant || "h3" } gutterBottom={true} className={ styles.title } align={ props.align === 'center' ? 'center' : 'inherit' } >
                 { props.children }
                 
             </Typography>

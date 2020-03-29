@@ -1,20 +1,24 @@
-
-import React from "react";
-
-import Box from "@material-ui/core/Box";
-import Button from '@material-ui/core/Button';
-
+import React from "react"
+import Box from "@material-ui/core/Box"
+import Button from "@material-ui/core/Button"
 
 export default function ButtonCard(props) {
-
-    return (
-        <Box borderRadius={10} bgcolor="background.paper" p="1.3rem" paddingTop={"4rem"}>
-            { props.children }
-            <Box paddingTop="1.2rem">
-                <Button variant="contained" color="primary">
-                    { props.buttonContent }
-                </Button>
-            </Box>
-        </Box>
-    );
+  return (
+    <Box
+      borderRadius={4}
+      bgcolor="background.paper"
+      p={{ xs: "4rem 1rem", sm: "5rem 2rem", md: "5rem 2rem", lg: "5rem 2.2rem" }}
+      maxWidth={{ sm: "30rem" }}
+      marginX={{ sm: "auto" }}
+      boxShadow={3}
+    >
+      {props.children}
+      <Box paddingTop="1.6rem">
+        <Button variant="contained" color="secondary">
+          {props.buttonContent}
+        </Button>
+      </Box>
+    </Box>
+  )
+  
 }

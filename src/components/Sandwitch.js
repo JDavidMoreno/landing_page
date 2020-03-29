@@ -29,11 +29,11 @@ export default function Sandwitch(props) {
             </Box>
             <div style={ styles.tail } />
             <div style={{paddingLeft: '2rem'}}>
-            <Typography variant="span">
-                <Box fontWeight="fontWeightBold" fontSize="1.2rem">
+            <Box fontWeight="fontWeightBold" fontSize="1.2rem">
+                <Typography variant="body2">
                     { props.name || '' }
-                </Box>
-            </Typography> 
+                </Typography>
+            </Box>
             </div>
             <br />
         </ThemeProvider>

@@ -1,16 +1,11 @@
 import React from "react";
 // import { Link } from "gatsby";
-
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Divider from '@material-ui/core/Divider';
 import Box from "@material-ui/core/Box";
-import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-
-
 
 import { ThemeProvider } from "@material-ui/core/styles";
 
@@ -23,13 +18,11 @@ import { Title, ImgParagraph, ImgFit } from "../components/Formatting";
 import Parallax from "../components/Parallax";
 import FormContact from "../containers/FormContact";
 import LightCheckBox from "../components/LightCheckbox";
-
-
+import LightInput from "../components/LightInput";
 
 import theme from "../styles/typo_theme";
 import flyingImage from "../../static/flying.jpg";
 import child from "../../static/child.jpeg";
-
 
 
 export default class App extends React.Component {
@@ -217,39 +210,40 @@ export default class App extends React.Component {
                     <Title variant="h4">
                         Варианты оплаты индивидуальных занятий:
                     </Title>
-                    <Typography variant="body1" component="p">
-                        <Box maxWidth="50%" margin="auto" marginBottom="3rem">
+                    <Box maxWidth="50%" margin="auto" marginBottom="3rem">
+                        <Typography variant="body1" component="p">
                             Бронирование времени осуществляется при предоплате первого занятия. При отмене/переносе встречи по желанию клиента менее чем за 24 часа до встречи предоплата не возвращается.
-                        </Box>
-                    </Typography>
+                        </Typography>
+                    </Box>
+                        
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={12} md={4}>
                             <CardButton buttonContent="Click me!">
-                                <Title variant="h5">
+                                <Title variant="h4">
                                     3000 рублей за занятие
                                 </Title>
                                 <Box textAlign="left">
-                                    <Typography variant="body1">
+                                    <Typography variant="h6">
                                         При оплате 1 занятия
                                     </Typography>
                                     <ul>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 <strong>10 занятий</strong> по 1,5 часа (Skype)
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 Проверка домашних заданий
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 Занятия в вечерние или утренние часы в будние дни или в выходные
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                             Личная встреча (м. Таганская) +650 рублей к встрече
                                             </Typography>
                                         </li>
@@ -259,7 +253,7 @@ export default class App extends React.Component {
                         </Grid>
                         <Grid item xs={12} sm={12} md={4}>
                             <CardButton buttonContent="Click me!">
-                                <Title variant="h5">
+                                <Title variant="h4">
                                     3000 рублей за занятие
                                 </Title>
                                 <Box textAlign="left">
@@ -268,22 +262,22 @@ export default class App extends React.Component {
                                     </Typography>
                                     <ul>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 <strong>10 занятий</strong> по 1,5 часа (Skype)
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 Проверка домашних заданий
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 Занятия в вечерние или утренние часы в будние дни или в выходные
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                             Личная встреча (м. Таганская) +650 рублей к встрече
                                             </Typography>
                                         </li>
@@ -293,7 +287,7 @@ export default class App extends React.Component {
                         </Grid>
                         <Grid item xs={12} sm={12} md={4}>
                             <CardButton buttonContent="Click me!">
-                                <Title variant="h5">
+                                <Title variant="h4">
                                     3000 рублей за занятие
                                 </Title>
                                 <Box textAlign="left">
@@ -302,22 +296,22 @@ export default class App extends React.Component {
                                     </Typography>
                                     <ul>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 <strong>10 занятий</strong> по 1,5 часа (Skype)
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 Проверка домашних заданий
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                                 Занятия в вечерние или утренние часы в будние дни или в выходные
                                             </Typography>
                                         </li>
                                         <li>
-                                            <Typography variant="body1">
+                                            <Typography variant="body1" component="span">
                                             Личная встреча (м. Таганская) +650 рублей к встрече
                                             </Typography>
                                         </li>
@@ -328,60 +322,64 @@ export default class App extends React.Component {
                     </Grid>
                 </Section>
                 <Parallax src={ child } filter="rgba(97, 84, 79, 0.79)">
-                    <Box textAlign="center" p="3rem">
-                        <Title>
-                        Запишитесь на курс прямо сейчас!
-                        </Title>
-                        <Typography variant="body1">
-                            Торопитесь! Количество мест ограничено!!!<br />
-                            Буду рада нашей встрече!
-                        </Typography>
-                        <FormContact>
-                            <div>
-                                <TextField id="outlined-basic" rowsMax="1" label="Outlined" variant="outlined" />
-                            </div>
-                            <div>
-                                <TextField id="outlined-basic" rowsMax="1" label="Outlined" variant="outlined" />
-                            </div>
-                            <div>
-                                <TextField id="outlined-basic" rowsMax="1" label="Outlined" variant="outlined" />
-                            </div>
-                            <div>
-                                <Typography variant="body2">
-                                    Ваша программа
+                    <Grid container spacing={0} justify="center">
+                        <Grid item xs={12} sm={10} md={8}>
+                            <Box textAlign="center" p="3rem">
+                                <Title>
+                                    Запишитесь на курс прямо сейчас!
+                                </Title>
+                                <Typography variant="body1">
+                                    Торопитесь! Количество мест ограничено!!!<br />
+                                    Буду рада нашей встрече!
                                 </Typography>
-                                <div>
-                                    <FormControlLabel className=".form_margin"
-                                        control={<LightCheckBox  name="gilad" />}
-                                        label="Option 1"
-                                    />
-                                </div>
-                                {/* <FormControlLabel
-                                    control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-                                    label="Gilad Gray"
-                                /> */}
-                                <div>
-                                    <FormControlLabel
-                                        control={<LightCheckBox  name="jason" />}
-                                        label="Option 2"
-                                    />
-                                </div>
-                                <div>
-                                    <FormControlLabel
-                                        control={<LightCheckBox  name="antoine" />}
-                                        label="Option 3"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <Button variant="contained" color="primary">My Button</Button> 
-                            </div>
-                            <Typography variant="body2">
-                                Нажимая на кнопку "Отправить заявку" вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности.
-                            </Typography>
+                                <FormContact>
+                                    <div>
+                                        <LightInput id="outlined-basic" label="Nombre" variant="filled" margin="normal" fullWidth color="secondary"/>
+                                    </div>
+                                    <div>
+                                        <LightInput id="outlined-basic" label="Apellido" variant="filled" margin="normal" fullWidth color="secondary"/>
+                                    </div>
+                                    <div>
+                                        <LightInput id="outlined-basic" label="E-mail" variant="filled" margin="normal" fullWidth  color="secondary"/>
+                                    </div>
+                                    <div>
+                                        <Typography variant="body2">
+                                            Ваша программа
+                                        </Typography>
+                                        <div>
+                                            <FormControlLabel className=".form_margin"
+                                                control={<LightCheckBox  name="gilad" />}
+                                                label="Option 1 asdfsdf asdfsadf dafsdf dfda sokjd dfi df"
 
-                        </FormContact>
-                    </Box>
+                                            />
+                                        </div>
+                                        {/* <FormControlLabel
+                                            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
+                                            label="Gilad Gray"
+                                        /> */}
+                                        <div>
+                                            <FormControlLabel
+                                                control={<LightCheckBox  name="jason" />}
+                                                label="Option 2"
+                                            />
+                                        </div>
+                                        <div>
+                                            <FormControlLabel
+                                                control={<LightCheckBox  name="antoine" />}
+                                                label="Option 3"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <Button variant="contained" color="secondary" fullWidth>My Button</Button> 
+                                    </div>
+                                    <Typography variant="body2">
+                                        Нажимая на кнопку "Отправить заявку" вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности.
+                                    </Typography>
+                                </FormContact>
+                            </Box>
+                        </Grid>
+                    </Grid>
                 </Parallax>
                 <Section color="#d0d4a2" align="center">
                     <Title variant="h4" align="center">
