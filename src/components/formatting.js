@@ -72,7 +72,23 @@ ImgParagraph.propTypes = {
 }
 
 export function ImgFit(props) {
+    let style;
+    if (props.contain === true) {
+        style = {
+            width: '100%',
+            objectFit: 'contain',
+        }
+    } else {
+        style = {
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+        }
+    }
+
+    console.log(style)
+
     return (
-        <img src={ props.src || '' } alt={ props.alt || '' } className={ styles.img_fit } />
+        <img src={ props.src || '' } alt={ props.alt || '' } style={ style }/>
     )
 }

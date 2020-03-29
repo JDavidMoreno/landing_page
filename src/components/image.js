@@ -7,7 +7,6 @@ export default class Image extends React.Component {
     render() {
         let divStyles = {
             backgroundImage: `url(${ this.props.src })`,
-            
         };
 
         return (

@@ -41,7 +41,7 @@ export default class App extends React.Component {
                             <Title variant="h5">
                                 КАК НАЙТИ СВОЕ ПРЕДНАЗНАЧЕНИЕ
                             </Title>
-                            <Button variant="contained" color="primary">My Button</Button>
+                            <Button variant="contained" color="secondary">My Button</Button>
                         </Grid>
                     </Grid>
                 </Image>
@@ -170,7 +170,7 @@ export default class App extends React.Component {
                     </Title>
                     <Grid container spacing={4}>
                         <Grid item sm={12} md={6}>
-                            {/* Image will be here */}
+                            <ImgFit src={ child } alt="child" contain={ true}/>
                         </Grid>
                         <Grid item sm={12} md={6}>
                             <Typography variant="body1">
@@ -202,7 +202,7 @@ export default class App extends React.Component {
                             </ImgParagraph>
                         </Grid>
                         <Grid item sm={12} md={6}>
-                            {/* Image will be here */}
+                            <ImgFit src={ child } alt="child"/>
                         </Grid>
                     </Grid>
                 </Section>
@@ -323,7 +323,7 @@ export default class App extends React.Component {
                 </Section>
                 <Parallax src={ child } filter="rgba(97, 84, 79, 0.79)">
                     <Grid container spacing={0} justify="center">
-                        <Grid item xs={12} sm={10} md={8}>
+                        <Grid item xs={12} sm={10} md={8} lg={6}>
                             <Box textAlign="center" p="3rem">
                                 <Title>
                                     Запишитесь на курс прямо сейчас!
