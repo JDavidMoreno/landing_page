@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Divider from '@material-ui/core/Divider';
 import Box from "@material-ui/core/Box";
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import Footer from "../components/Footer";
@@ -17,8 +16,7 @@ import CardButton from "../components/CarButton";
 import { Title, ImgParagraph, ImgFit } from "../components/Formatting";
 import Parallax from "../components/Parallax";
 import FormContact from "../containers/FormContact";
-import LightCheckBox from "../components/LightCheckbox";
-import LightInput from "../components/LightInput";
+
 
 import theme from "../styles/typo_theme";
 import artImage from "../../static/1.png";
@@ -29,22 +27,26 @@ import Instagram from '@material-ui/icons/Instagram';
 
 
 export default class App extends React.Component {
+    
     render() {
         return (
             <ThemeProvider theme={ theme }>
-                <Image src={ artImage } alt="art in the blue sky">
-                    <Grid container spacing={4} style={{paddingLeft: "2rem"}}>
-                        <Grid item xs={12} style={{ marginTop: '10%' }}>
-                            <Title variant="h2">
-                                ПОТОКОВОЕ РИСОВАНИЕ
-                            </Title>
-                            <Title variant="h5">
+                <Image src={ artImage } height={window.innerHeight} alt="art in the blue sky">
+                    <Grid container spacing={4} >
+                        <Grid item xs={12} style={{ marginTop: '5%' }}>
+                            <Title variant="h5" align="center">
                                 ВДОХНОВЛЯЮЩИЙ <br /> ОНЛАЙН КУРС
                             </Title>
-                            <Title variant="h5">
-                                С СОПРОВОЖДЕНИЕМ ТИАНЫ ГРАНАТОВИЧ
+                            <Title variant="h2" align="center">
+                                ПОТОКОВОЕ РИСОВАНИЕ
                             </Title>
-                            <Button href="#courses_prices" variant="contained" color="secondary">ЗАБРОНИРОВАТЬ МЕСТО</Button>
+                            {/* Make the subtitle appear not too much in the middle or below */}
+                            <Box marginTop={window.innerHeight < 960 ? (window.innerHeight / 2.5).toString() + 'px' : (window.innerHeight / 2).toString() + 'px'} >
+                                <Title variant="h5" style={{marginTop: '20rem'}}>
+                                    С СОПРОВОЖДЕНИЕМ ТИАНЫ ГРАНАТОВИЧ
+                                </Title>
+                                <Button href="#courses_prices" variant="contained" color="secondary">ЗАБРОНИРОВАТЬ МЕСТО</Button>
+                            </Box>
                         </Grid>
                     </Grid>
                 </Image>
@@ -57,7 +59,6 @@ export default class App extends React.Component {
                         <br/>🎨
                         <br/>
 Потоковое рисование наполняет нас состоянием Доверия и внутренней Гармонии.
-
                     </Title>
                     <Divider variant="middle"/>
                     <Typography variant="body1">
@@ -388,51 +389,7 @@ export default class App extends React.Component {
                                     Доступ к курсу сразу после оплаты <br />
                                     Буду рада нашей встрече!
                                 </Typography>
-                                <FormContact>
-                                    <div>
-                                        <LightInput id="outlined-basic" label="Имя" variant="filled" margin="normal" fullWidth color="secondary"/>
-                                    </div>
-                                    <div>
-                                        <LightInput id="outlined-basic" label="Фамилия" variant="filled" margin="normal" fullWidth color="secondary"/>
-                                    </div>
-                                    <div>
-                                        <LightInput id="outlined-basic" label="E-mail" variant="filled" margin="normal" fullWidth  color="secondary"/>
-                                    </div>
-                                    <div>
-                                        <Typography variant="body2">
-                                            Ваш Пакет:
-                                        </Typography>
-                                        <div>
-                                            <FormControlLabel className=".form_margin"
-                                                control={<LightCheckBox  name="gilad" />}
-                                                label="По бонусной ценне клуба Жизнь в Потоке - 22 € "
-
-                                            />
-                                        </div>
-                                        {/* <FormControlLabel
-                                            control={<Checkbox checked={gilad} onChange={handleChange} name="gilad" />}
-                                            label="Gilad Gray"
-                                        /> */}
-                                        <div>
-                                            <FormControlLabel
-                                                control={<LightCheckBox  name="jason" />}
-                                                label=" - 122 €"
-                                            />
-                                        </div>
-                                        <div>
-                                            <FormControlLabel
-                                                control={<LightCheckBox  name="antoine" />}
-                                                label="ПРЕМИУМ - 222 €"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <Button variant="contained" color="secondary" fullWidth>Записаться на курс</Button> 
-                                    </div>
-                                    <Typography variant="body2">
-                                        Нажимая на кнопку "Отправить заявку" вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности.
-                                    </Typography>
-                                </FormContact>
+                                <FormContact />
                             </Box>
                         </Grid>
                     </Grid>

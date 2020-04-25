@@ -86,8 +86,6 @@ export function ImgFit(props) {
         }
     }
 
-    console.log(style)
-
     return (
         <img src={ props.src || '' } alt={ props.alt || '' } style={ style }/>
     )
