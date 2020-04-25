@@ -26,3 +26,11 @@ ul {
 input {
   color: white;
 }
+
+a.general_link {
+  color: #f50057;
+}
+
+a.general_link:hover {
+  color: #c90060
+}

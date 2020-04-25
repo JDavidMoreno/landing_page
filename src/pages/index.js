@@ -1,12 +1,12 @@
 import React from "react";
-// import { Link } from "gatsby";
+
+import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Divider from '@material-ui/core/Divider';
 import Box from "@material-ui/core/Box";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-
 import { ThemeProvider } from "@material-ui/core/styles";
 
 import Footer from "../components/Footer";
@@ -36,14 +36,13 @@ export default class App extends React.Component {
                     <Grid container spacing={4} style={{paddingLeft: "2rem"}}>
                         <Grid item xs={12} style={{ marginTop: '25%' }}>
                             <Title variant="h2">
-                            ПОТОКОВОЕ РИСОВАНИЕ
-  
+                                ПОТОКОВОЕ РИСОВАНИЕ
                             </Title>
                             <Title variant="h5">
-                            ВДОХНОВЛЯЮЩИЙ <br /> ОНЛАЙН КУРС
+                                ВДОХНОВЛЯЮЩИЙ <br /> ОНЛАЙН КУРС
                             </Title>
                             <Title variant="h5">
-                            С СОПРОВОЖДЕНИЕМ ТИАНЫ ГРАНАТОВИЧ
+                                С СОПРОВОЖДЕНИЕМ ТИАНЫ ГРАНАТОВИЧ
                             </Title>
                             <Button variant="contained" color="secondary">ЗАБРОНИРОВАТЬ МЕСТО</Button>
                         </Grid>
@@ -260,7 +259,7 @@ export default class App extends React.Component {
                         
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={12} md={4}>
-                            <CardButton buttonContent="оплатить">
+                            <CardButton buttonContent="оплатить" href="https://secure.wayforpay.com/payment/art_promo">
                                 <Title variant="h4">
                                     ПРЕМИУМ
                                 </Title>
@@ -294,7 +293,7 @@ export default class App extends React.Component {
                             </CardButton>
                             </Grid>
                         <Grid item xs={12} sm={12} md={4}>
-                            <CardButton buttonContent="оплатить">
+                            <CardButton buttonContent="оплатить" href="https://www.instagram.com/granatovych_art_standart">
                                 <Title variant="h4">
                                     ПРЕМИУМ
                                 </Title>
@@ -333,7 +332,7 @@ export default class App extends React.Component {
                             </CardButton>
                         </Grid>
                         <Grid item xs={12} sm={12} md={4}>
-                            <CardButton buttonContent="оплатить">
+                            <CardButton buttonContent="оплатить" href="https://secure.wayforpay.com/payment/art_premium">
                                 <Title variant="h4">
                                     ПРЕМИУМ
                                 </Title>
@@ -450,7 +449,9 @@ export default class App extends React.Component {
                     </Title>
                     <Typography variant="body1">
                     Присоединяйтесь <br />
-                    <Instagram style={{fontSize: '2rem'}}/><br />
+                    <Link href="https://www.instagram.com/granatovych_art" target="new" color="secondary" className="general_link">
+                        <Instagram style={{fontSize: '2rem'}}/><br />
+                    </Link>
                      @granatovych_art
                     </Typography>
                 </Section>

@@ -14,7 +14,7 @@ export default function ButtonCard(props) {
     >
       {props.children}
       <Box paddingTop="1.6rem">
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="secondary" href={props.href || ''} target={props.target || 'new'}>
           {props.buttonContent}
         </Button>
       </Box>
