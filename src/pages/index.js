@@ -34,7 +34,7 @@ export default class App extends React.Component {
             <ThemeProvider theme={ theme }>
                 <Image src={ artImage } alt="art in the blue sky">
                     <Grid container spacing={4} style={{paddingLeft: "2rem"}}>
-                        <Grid item xs={12} style={{ marginTop: '25%' }}>
+                        <Grid item xs={12} style={{ marginTop: '10%' }}>
                             <Title variant="h2">
                                 ПОТОКОВОЕ РИСОВАНИЕ
                             </Title>
@@ -44,7 +44,7 @@ export default class App extends React.Component {
                             <Title variant="h5">
                                 С СОПРОВОЖДЕНИЕМ ТИАНЫ ГРАНАТОВИЧ
                             </Title>
-                            <Button variant="contained" color="secondary">ЗАБРОНИРОВАТЬ МЕСТО</Button>
+                            <Button href="#courses_prices" variant="contained" color="secondary">ЗАБРОНИРОВАТЬ МЕСТО</Button>
                         </Grid>
                     </Grid>
                 </Image>
@@ -247,6 +247,7 @@ export default class App extends React.Component {
                         </Grid>
                     </Grid>
                 </Section>
+                <div id="courses_prices" />
                 <Section color="#f6ffde" align="center">
                     <Title variant="h4">
                         Варианты оплаты индивидуальных занятий:
@@ -256,7 +257,6 @@ export default class App extends React.Component {
                             Бронирование времени осуществляется при предоплате первого занятия. При отмене/переносе встречи по желанию клиента менее чем за 24 часа до встречи предоплата не возвращается.
                         </Typography>
                     </Box>
-                        
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={12} md={4}>
                             <CardButton buttonContent="оплатить" href="https://secure.wayforpay.com/payment/art_promo">
@@ -293,7 +293,7 @@ export default class App extends React.Component {
                             </CardButton>
                             </Grid>
                         <Grid item xs={12} sm={12} md={4}>
-                            <CardButton buttonContent="оплатить" href="https://www.instagram.com/granatovych_art_standart">
+                            <CardButton buttonContent="оплатить" href="https://secure.wayforpay.com/payment/art_standart">
                                 <Title variant="h4">
                                     ПРЕМИУМ
                                 </Title>
