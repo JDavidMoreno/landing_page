@@ -27,11 +27,21 @@ import Instagram from '@material-ui/icons/Instagram';
 
 
 export default class App extends React.Component {
-    
+    constructor(props) {
+        super(props);
+        this.state = {
+            mainImageHeight: 0,
+        };
+    }
+
+    componentDidMount() {
+        this.setState({ mainImageHeight: window.innerHeight })
+    }
+
     render() {
         return (
             <ThemeProvider theme={ theme }>
-                <Image src={ artImage } height={window.innerHeight} alt="art in the blue sky">
+                <Image src={ artImage } height={ this.state.mainImageHeight } alt="art in the blue sky">
                     <Grid container spacing={4} >
                         <Grid item xs={12} style={{ marginTop: '5%' }}>
                             <Title variant="h5" align="center">
@@ -41,7 +51,7 @@ export default class App extends React.Component {
                                 ПОТОКОВОЕ РИСОВАНИЕ
                             </Title>
                             {/* Make the subtitle appear not too much in the middle or below */}
-                            <Box marginTop={window.innerHeight < 960 ? (window.innerHeight / 2.5).toString() + 'px' : (window.innerHeight / 2).toString() + 'px'} >
+                            <Box marginTop={this.state.mainImageHeight < 960 ? (this.state.mainImageHeight / 2.5).toString() + 'px' : (this.state.mainImageHeight / 2).toString() + 'px'} >
                                 <Title variant="h5" style={{marginTop: '20rem'}}>
                                     С СОПРОВОЖДЕНИЕМ ТИАНЫ ГРАНАТОВИЧ
                                 </Title>

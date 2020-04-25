@@ -4,6 +4,16 @@ import { withTheme } from '@material-ui/core/styles';
 
 
 class Image extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mainImageHeight: 0,
+        };
+    }
+
+    componentDidMount() {
+        this.setState({ mainImageHeight: window.innerHeight })
+    }
 
     render() {
         let divStyles = {
@@ -13,7 +23,7 @@ class Image extends React.Component {
         return (
             <div style={ divStyles } className={ imageStyles.img_container }>
                 { this.props.children }
-                <img src={ this.props.src } alt={ this.props.alt || "header image" } className={ imageStyles.img_contained } style={{maxHeight: this.props.height || `${ window.innerHeight / 10 + 'px' }`, height: this.props.height}} />
+                <img src={ this.props.src } alt={ this.props.alt || "header image" } className={ imageStyles.img_contained } style={{maxHeight: this.props.height || `${ this.state.mainImageHeight / 10 + 'px' }`, height: this.props.height}} />
             </div>            
         )
     }
