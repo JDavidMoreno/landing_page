@@ -5,5 +5,6 @@
  */
 
 module.exports = {
+  pathPrefix: `/lp`,
   plugins: ['gatsby-plugin-material-ui'],
 }

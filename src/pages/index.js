@@ -25,6 +25,8 @@ import art from "../../static/2.jpg";
 import yo from "../../static/y1.jpg";
 import Instagram from '@material-ui/icons/Instagram';
 
+// VERY IMPORTANT. Remember to compile production with -- gatsby build --prefix-paths --
+
 
 export default class App extends React.Component {
     constructor(props) {

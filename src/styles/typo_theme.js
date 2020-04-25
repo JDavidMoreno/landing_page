@@ -13,5 +13,4 @@ let options = {
 }
 
 let theme = createMuiTheme(options);
-console.log(theme);
 export default theme = responsiveFontSizes(theme);

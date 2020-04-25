@@ -22,8 +22,16 @@ export default class FormContact extends React.Component {
     }
 
     submitForm = (event) => {
+        let data = {
+            'your-name': this.state.yourName,
+            'your-surname': this.state.yourSurname,
+            'your-email': this.yourEmail
+        };
         event.preventDefault();
-        fetch('https://www.granatovych.com/contact/#wpcf7-f248-p201-o1')
+        fetch('https://www.granatovych.com/contact/#wpcf7-f248-p201-o1', {
+            methos: "POST",
+            body: JSON.stringify(data)
+        })
         .then((response) => {
             console.log("1 response", response);
             return response.json();
