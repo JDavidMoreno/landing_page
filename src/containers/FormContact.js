@@ -40,13 +40,13 @@ export default class FormContact extends React.Component {
         let valid = true;
         if (!this.state.yourName) {
             valid = false;
-            this.giveFeedback("Please, enter you name before submiting", 'warning');
+            this.giveFeedback("Пожалуйста, введите свое Имя", 'warning');
         } else if (!this.state.yourSurname) {
             valid = false;
-            this.giveFeedback("Please, enter you surname before submiting", 'warning');
+            this.giveFeedback("Пожалуйста, введите свою Фамилию", 'warning');
         } else if (!this.state.yourEmail) {
             valid = false;
-            this.giveFeedback("Please, enter you email before submiting", 'warning');
+            this.giveFeedback("Пожалуйста, введите свой Email", 'warning');
         }
         return valid;
     }
@@ -64,9 +64,9 @@ export default class FormContact extends React.Component {
             .then((response) => {
                 console.log("Response!: ", response);
                 if (response && response.ok === true) {
-                    this.giveFeedback("Form values successfully sent", 'success')
+                    this.giveFeedback("Поздравляю, Ваше письмо отправленно успешно!", 'success')
                 } else {
-                    this.giveFeedback("Upps, something was wrong ...", 'warning');
+                    this.giveFeedback("Упс, что-то пошло не так...", 'warning');
                 }
             });    
         }
