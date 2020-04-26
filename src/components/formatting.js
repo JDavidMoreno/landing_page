@@ -67,7 +67,7 @@ export function ImgParagraph(props) {
 
 ImgParagraph.propTypes = {
     imgPosition: PropTypes.string,
-    src: PropTypes.string,
+    src: PropTypes.object,
     alt: PropTypes.string,
     title: PropTypes.string,
 }

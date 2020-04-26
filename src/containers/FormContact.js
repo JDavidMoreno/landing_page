@@ -149,7 +149,7 @@ class FormContact extends React.Component {
                 <div>
                     <br />
                     <Button onClick={ this.submitForm } variant="contained" color="secondary" fullWidth>Записаться на курс</Button>
-                    <Fade in={ this.state.response }>
+                    <Fade in={ Boolean(this.state.response) }>
                         <Alert variant="filled" severity={this.state.severity} style={ this.styles.formFeedBack } >
                             {this.state.response}
                         </Alert>

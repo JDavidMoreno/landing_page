@@ -271,7 +271,7 @@ export default class App extends React.Component {
                                 <Title variant="h4">
                                     PROMO 
                                 </Title>
-                                <Typography variant="span" style={{fontSize: '2.5rem'}}>
+                                <Typography variant="body2" style={{fontSize: '2.5rem'}}>
                                     22 €
                                 </Typography>
                                 <Box textAlign="left">
@@ -305,7 +305,7 @@ export default class App extends React.Component {
                                 <Title variant="h4">
                                     STANDART
                                 </Title>
-                                <Typography variant="span" style={{fontSize: '2.5rem'}}>
+                                <Typography variant="body2" style={{fontSize: '2.5rem'}}>
                                     122 €
                                 </Typography>
                                 <Box textAlign="left">
@@ -349,7 +349,7 @@ export default class App extends React.Component {
                                 <Title variant="h4">
                                     PREMIUM 
                                 </Title>
-                                <Typography variant="span" style={{fontSize: '2.5rem'}}>
+                                <Typography variant="body2" style={{fontSize: '2.5rem'}}>
                                     222 €
                                 </Typography>
                                 <Box textAlign="left">
