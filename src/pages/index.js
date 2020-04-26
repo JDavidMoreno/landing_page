@@ -62,7 +62,7 @@ export default class App extends React.Component {
                                 "ПОТОКОВОЕ РИСОВАНИЕ"
                             </Title>
                             {/* Make the subtitle appear not too much in the middle or below */}
-                            <Box marginTop={this.state.mainImageHeight < 960 ? (this.state.mainImageHeight / 2.5).toString() + 'px' : (this.state.mainImageHeight / 2).toString() + 'px'}
+                            <Box marginTop={this.state.mainImageHeight < 750 ? (this.state.mainImageHeight / 2.6).toString() + 'px' : (this.state.mainImageHeight / 2).toString() + 'px'}
                                 marginLeft={'2rem'} >
                                 <Title variant="h5" style={{marginTop: '20rem'}}>
                                     С СОПРОВОЖДЕНИЕМ ТИАНЫ ГРАНАТОВИЧ
