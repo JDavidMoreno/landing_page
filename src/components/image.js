@@ -1,6 +1,5 @@
 import React from "react";
 import imageStyles from "./image.module.css";
-import { withTheme } from '@material-ui/core/styles';
 
 
 class Image extends React.Component {
@@ -29,4 +28,4 @@ class Image extends React.Component {
     }
 }
 
-export default withTheme(Image);
+export default Image;

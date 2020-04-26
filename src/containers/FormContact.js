@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import LightCheckBox from "../components/LightCheckbox";
 import LightInput from "../components/LightInput";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -8,7 +8,7 @@ import Fade from '@material-ui/core/Fade';
 import Alert from '@material-ui/lab/Alert';
 
 
-export default class FormContact extends React.Component {
+class FormContact extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -55,7 +55,7 @@ export default class FormContact extends React.Component {
     }
 
     validateEmail(email) {
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
             return true;
         }
         return false;
@@ -97,7 +97,7 @@ export default class FormContact extends React.Component {
     }
 
     handleCheckBoxChange = (event) => {
-        if (event.target.name == this.state.choice) {
+        if (event.target.name === this.state.choice) {
             this.setState({choice: ''});
         } else {
             this.setState({choice: event.target.name});
@@ -129,19 +129,19 @@ export default class FormContact extends React.Component {
                     </Typography>
                     <div>
                         <FormControlLabel className=".form_margin"
-                            control={<LightCheckBox  name="promo" onChange={ this.handleCheckBoxChange } checked={ this.state.choice == 'promo'}/>}
+                            control={<LightCheckBox  name="promo" onChange={ this.handleCheckBoxChange } checked={ this.state.choice === 'promo'}/>}
                             label="Promo"
                         />
                     </div>
                     <div>
                         <FormControlLabel
-                            control={<LightCheckBox  name="standard" onChange={ this.handleCheckBoxChange }  checked={ this.state.choice == 'standard'}/>}
+                            control={<LightCheckBox  name="standard" onChange={ this.handleCheckBoxChange }  checked={ this.state.choice === 'standard'}/>}
                             label="Standard"
                         />
                     </div>
                     <div>
                         <FormControlLabel
-                            control={<LightCheckBox  name="premium" onChange={ this.handleCheckBoxChange }  checked={ this.state.choice == 'premium'}/>}
+                            control={<LightCheckBox  name="premium" onChange={ this.handleCheckBoxChange }  checked={ this.state.choice === 'premium'}/>}
                             label="Premium"
                         />
                     </div>
@@ -162,3 +162,5 @@ export default class FormContact extends React.Component {
         );   
     }
 }
+
+export default FormContact;
