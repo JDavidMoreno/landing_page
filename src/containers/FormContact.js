@@ -47,8 +47,18 @@ export default class FormContact extends React.Component {
         } else if (!this.state.yourEmail) {
             valid = false;
             this.giveFeedback("Пожалуйста, введите свой Email", 'warning');
+        } else if (!this.validateEmail(this.state.yourEmail)) {
+            valid = false;
+            this.giveFeedback("Проверьте, верно ли ввели ваш Email", 'warning');
         }
         return valid;
+    }
+
+    validateEmail(email) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+            return true;
+        }
+        return false;
     }
 
     submitForm = (event) => {
