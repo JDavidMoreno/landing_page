@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 
 import { ThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import { Grid, Box } from "@material-ui/core";
 
 import theme from "../styles/typo_theme";
 import styles from "./formatting.module.css";
-import icon from "../../static/checked.svg";
-import CheckRounded from "@material-ui/icons/CheckRounded";
 
 
 
@@ -39,13 +37,13 @@ export function ImgParagraph(props) {
         }
     };
 
-    const Icon = props.src ? props.src : CheckRounded;
+    const Icon = props.src ? props.src : Box;
 
     let title = props.title ? <Typography variant="h5" gutterBottom={true} style={{fontWeight: 600}}>{ props.title }</Typography> : "";
     if (!props.imgPosition || props.imgPosition === 'top') {
         return (
             <ThemeProvider theme={ theme }>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} style={props.style}>
                     <Grid item xs={12}>
                         { title }
                         <Icon style={styles.icon}/>
@@ -61,7 +59,7 @@ export function ImgParagraph(props) {
         let right = props.imgPosition === 'right' ?  <Icon style={styles.icon} /> : <div>{ title }<Typography variant="body1" gutterBottom={true} className={ styles.format_image_p }>{ props.children }</Typography></div>;
         return (
             <ThemeProvider theme={ theme }>
-                <Grid container spacing={3}>
+                <Grid container spacing={3} style={props.style}>
                     <Grid item xs={props.imgPosition === 'left' ? 2 : 10}>
                         { left }
                     </Grid>

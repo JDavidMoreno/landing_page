@@ -11,7 +11,7 @@ export default class Section extends React.Component {
             padding: '4rem 0',
             backgroundColor: this.props.color,
             textAlign: this.props.align ? this.props.align : 'left',
-
+            ...this.props.style
         };
 
         return (
