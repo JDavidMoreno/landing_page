@@ -8,7 +8,8 @@ import Grid from "@material-ui/core/Grid";
 
 import theme from "../styles/typo_theme";
 import styles from "./formatting.module.css";
-import icon from "../../static/checked.svg"
+import icon from "../../static/checked.svg";
+import CheckRounded from "@material-ui/icons/CheckRounded";
 
 
 
@@ -30,6 +31,15 @@ Title.propTypes = {
 }
 
 export function ImgParagraph(props) {
+    // When no title, the icon needs to be a litle bit lower
+    const styles = {
+        icon: {
+            fontSize: '2rem',
+            marginTop: !props.title ? '0.8rem' : 0
+        }
+    };
+
+    const Icon = props.src ? props.src : CheckRounded;
 
     let title = props.title ? <Typography variant="h5" gutterBottom={true} style={{fontWeight: 600}}>{ props.title }</Typography> : "";
     if (!props.imgPosition || props.imgPosition === 'top') {
@@ -38,7 +48,7 @@ export function ImgParagraph(props) {
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         { title }
-                        <img src={ props.src || icon } alt={ props.alt || "icon" } style={{maxHeight: 30, maxWidth: 30, marginBottom: "1rem"}} />
+                        <Icon style={styles.icon}/>
                         <Typography variant="body1" gutterBottom={true} className={ styles.format_image_p }>
                             { props.children } 
                         </Typography>
@@ -47,8 +57,8 @@ export function ImgParagraph(props) {
             </ThemeProvider>
         );
     } else {
-        let left = props.imgPosition === 'left' ?  <img src={ props.src || icon  } alt={ props.alt } style={{maxHeight: 30, maxWidth: 30, marginBottom: "1rem"}} /> : <div>{ title }<Typography variant="body1" gutterBottom={true} className={ styles.format_image_p }>{ props.children }</Typography></div>;
-        let right = props.imgPosition === 'right' ?  <img src={ props.src || icon  } alt={ props.alt } style={{maxHeight: 30, maxWidth: 30, marginBottom: "1rem"}} /> : <div>{ title }<Typography variant="body1" gutterBottom={true} className={ styles.format_image_p }>{ props.children }</Typography></div>;
+        let left = props.imgPosition === 'left' ?  <Icon style={styles.icon} /> : <div>{ title }<Typography variant="body1" gutterBottom={true} className={ styles.format_image_p }>{ props.children }</Typography></div>;
+        let right = props.imgPosition === 'right' ?  <Icon style={styles.icon} /> : <div>{ title }<Typography variant="body1" gutterBottom={true} className={ styles.format_image_p }>{ props.children }</Typography></div>;
         return (
             <ThemeProvider theme={ theme }>
                 <Grid container spacing={3}>

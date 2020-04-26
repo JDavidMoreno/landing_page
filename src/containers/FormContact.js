@@ -65,8 +65,8 @@ export default class FormContact extends React.Component {
         event.preventDefault();
         if (this.isValid()) {
             let formData = new FormData(document.getElementById('mainContactForm'));
-            formData.append("your-subject", "Mensage del formulario en In Art page");
-            formData.append("your-message", this.state.choice ? "Tipo de curso solicitado: " + this.state.choice : "No ha especificado ningún tipo curso en el formulatio");
+            formData.append("your-subject", "Курс ПОТОКОВОЕ РИСОВАНИЕ ");
+            formData.append("your-message", this.state.choice ? "Выбран пакет: " + this.state.choice : "Пакет не выбран.");
             fetch('https://www.granatovych.com/wp-json/contact-form-7/v1/contact-forms/248/feedback', {
                 method: "POST",
                 body: formData
