@@ -22,23 +22,11 @@ export default class FormContact extends React.Component {
     }
 
     submitForm = (event) => {
-        let data = {
-            'your-name': this.state.yourName,
-            'your-surname': this.state.yourSurname,
-            'your-email': this.yourEmail,
-            '_wpcf7': "248",
-            '_wpcf7_version': "5.0.1",
-            '_wpcf7_locale': "en_US",
-            '_wpcf7_unit_tag': "wpcf7-f248-p201-o1",
-            '_wpcf7_container_post': "201",
-        };
         event.preventDefault();
-        fetch('https://www.granatovych.com/contact/#wpcf7-f248-p201-o1', {
+        let formData = new FormData(document.getElementById('mainContactForm'));
+        fetch('https://www.granatovych.com/wp-json/contact-form-7/v1/contact-forms/248/feedback', {
             method: "POST",
-            body: JSON.stringify(data),
-            headers:{
-                'Content-Type': 'application/json'
-            }
+            body: formData
         })
         .then((response) => {
             console.log("1 response", response);
