@@ -4,6 +4,8 @@ import LightInput from "../components/LightInput";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Fade from '@material-ui/core/Fade';
+import Alert from '@material-ui/lab/Alert';
 
 
 export default class FormContact extends React.Component {
@@ -12,7 +14,10 @@ export default class FormContact extends React.Component {
         this.state = {
             yourName: '',
             yourSurname: '',
-            yourEmail: ''
+            yourEmail: '',
+            choice: '',
+            response: '',
+            severity: ''
         };
         this.mapping = {
             'your-name': 'yourName',
@@ -21,17 +26,57 @@ export default class FormContact extends React.Component {
         }
     }
 
+    styles = {
+        formFeedBack: {
+            marginTop: '1rem',
+            height: '1.5rem',
+            paddingTop: 0,
+            paddingBottom: '0.6rem',
+            opacity: '0.8'
+        }
+    }
+
+    isValid() {
+        let valid = true;
+        if (!this.state.yourName) {
+            valid = false;
+            this.giveFeedback("Please, enter you name before submiting", 'warning');
+        } else if (!this.state.yourSurname) {
+            valid = false;
+            this.giveFeedback("Please, enter you surname before submiting", 'warning');
+        } else if (!this.state.yourEmail) {
+            valid = false;
+            this.giveFeedback("Please, enter you email before submiting", 'warning');
+        }
+        return valid;
+    }
+
     submitForm = (event) => {
         event.preventDefault();
-        let formData = new FormData(document.getElementById('mainContactForm'));
-        fetch('https://www.granatovych.com/wp-json/contact-form-7/v1/contact-forms/248/feedback', {
-            method: "POST",
-            body: formData
-        })
-        .then((response) => {
-            console.log("1 response", response);
-            console.log("2 reponse", JSON.parse(response));
-        });
+        if (this.isValid()) {
+            let formData = new FormData(document.getElementById('mainContactForm'));
+            formData.append("your-subject", "Mensage del formulario en In Art page");
+            formData.append("your-message", this.state.choice ? "Tipo de curso solicitado: " + this.state.choice : "No ha especificado ningún tipo curso en el formulatio");
+            fetch('https://www.granatovych.com/wp-json/contact-form-7/v1/contact-forms/248/feedback', {
+                method: "POST",
+                body: formData
+            })
+            .then((response) => {
+                console.log("Response!: ", response);
+                if (response && response.ok === true) {
+                    this.giveFeedback("Form values successfully sent", 'success')
+                } else {
+                    this.giveFeedback("Upps, something was wrong ...", 'warning');
+                }
+            });    
+        }
+    }
+
+    giveFeedback(response, severity) {
+        this.setState({response: response, severity: severity});
+        setTimeout(() => {
+            this.setState({response: '', severity: ''});
+        }, 3000)
     }
 
     handleInputChange = (event) => {
@@ -39,6 +84,14 @@ export default class FormContact extends React.Component {
         this.setState({
           [this.mapping[target.name]]: target.value
         });
+    }
+
+    handleCheckBoxChange = (event) => {
+        if (event.target.name == this.state.choice) {
+            this.setState({choice: ''});
+        } else {
+            this.setState({choice: event.target.name});
+        }
     }
 
     render() {
@@ -60,31 +113,36 @@ export default class FormContact extends React.Component {
                 <div>
                     <LightInput name="your-email" value={this.state.yourEmail} onChange={ this.handleInputChange } label="E-mail" variant="filled" margin="normal" fullWidth  color="secondary"/>
                 </div>
-                {/* <div>
+                <div>
                     <Typography variant="body2">
                         Ваш Пакет:
                     </Typography>
                     <div>
                         <FormControlLabel className=".form_margin"
-                            control={<LightCheckBox  name="gilad" />}
-                            label="По бонусной ценне клуба Жизнь в Потоке - 22 € "
+                            control={<LightCheckBox  name="promo" onChange={ this.handleCheckBoxChange } checked={ this.state.choice == 'promo'}/>}
+                            label="Promo"
                         />
                     </div>
                     <div>
                         <FormControlLabel
-                            control={<LightCheckBox  name="jason" />}
-                            label=" - 122 €"
+                            control={<LightCheckBox  name="standard" onChange={ this.handleCheckBoxChange }  checked={ this.state.choice == 'standard'}/>}
+                            label="Standard"
                         />
                     </div>
                     <div>
                         <FormControlLabel
-                            control={<LightCheckBox  name="antoine" />}
-                            label="ПРЕМИУМ - 222 €"
+                            control={<LightCheckBox  name="premium" onChange={ this.handleCheckBoxChange }  checked={ this.state.choice == 'premium'}/>}
+                            label="Premium"
                         />
                     </div>
-                </div> */}
+                </div>
                 <div>
-                    <Button onClick={ this.submitForm } variant="contained" color="secondary" fullWidth>Записаться на курс</Button> 
+                    <Button onClick={ this.submitForm } variant="contained" color="secondary" fullWidth>Записаться на курс</Button>
+                    <Fade in={ this.state.response }>
+                        <Alert variant="filled" severity={this.state.severity} style={ this.styles.formFeedBack } >
+                            {this.state.response}
+                        </Alert>
+                    </Fade>
                 </div>
                 <Typography variant="body2">
                     Нажимая на кнопку "Отправить заявку" вы даете согласие на обработку персональных данных и соглашаетесь c политикой конфиденциальности.

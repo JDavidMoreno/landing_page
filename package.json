@@ -16,6 +16,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.7",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.50",
     "@material-ui/styles": "^4.9.6",
     "acorn": "^6.4.1",
     "gatsby": "^2.19.45",
