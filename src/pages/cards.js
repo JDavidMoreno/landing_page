@@ -10,6 +10,9 @@ import cardBack from "../../static/1m.jpg";
 import ExpandMoreRounded from '@material-ui/icons/ExpandMoreRounded';
 import RefreshRounded from '@material-ui/icons/RefreshRounded';
 import paypalButton from "../images/paypal_button.png";
+import { ThemeProvider } from "@material-ui/core/styles";
+import theme from "../styles/typo_theme";
+
 
 function IndexPage(props) {
   const [shuffledTimes, setShuffle] = useState(0);
@@ -165,27 +168,16 @@ function IndexPage(props) {
   shuffle(Messages);
   
   return (
-    <Layout>
-      <SEO title="Home" spacing={4} />
-      <Table>
-        <Grid container justify="center" className="card-table">
-          {variables.isVerticalScreen === true ? 
-          (
-            <Grid item xs={12} style={{height: '100%'}}>
-              {/* Add icons here too */}
-              {/* <Box position="relative" className="card-position" style={variables.isVerticalScreen === true ? {margin: 'auto'} : {}}> */}
-              <Box position="relative" className="card-position">
-                { Cards }
-              </Box>
-              <Box position="relative" className="message-position">
-                { Messages }
-              </Box>
-            </Grid>
-          ) : (
-            <>
-              <Grid item xs={3} style={{height: '97%'}}>
-                {/*  And here the other too */}
-                <RefreshRounded id="shuffle-cards" onClick={onClickShuffle} alt="Shuffle all the cards"/>
+    <ThemeProvider theme={ theme }>
+      <Layout>
+        <SEO title="Home" spacing={4} />
+        <Table>
+          <Grid container justify="center" className="card-table">
+            {variables.isVerticalScreen === true ? 
+            (
+              <Grid item xs={12} style={{height: '100%'}}>
+                {/* Add icons here too */}
+                {/* <Box position="relative" className="card-position" style={variables.isVerticalScreen === true ? {margin: 'auto'} : {}}> */}
                 <Box position="relative" className="card-position">
                   { Cards }
                 </Box>
@@ -193,26 +185,38 @@ function IndexPage(props) {
                   { Messages }
                 </Box>
               </Grid>
-              <Grid item xs={3}>
-                <Box id="pos1" className="card-position" />
-                <Box id="mes1" className="message-position" />
-              </Grid>
-              <Grid item xs={3}>
-                <Box id="pos2" className="card-position" />
-                <Box id="mes2" className="message-position" />
-              </Grid>
-              <Grid item xs={3}>
-                <Box id="pos3" className="card-position" />
-                <Box id="mes3" className="message-position" />
-              </Grid>
-              <ExpandMoreRounded id="expand-more" onClick={onExpandClick}/>
-              <img id="paypal-button" src={paypalButton} alt="paypal" />
-            </>)}
-        </Grid> 
-      </Table>
-      <Info />
-    </Layout>
-    
+            ) : (
+              <>
+                <Grid item xs={3} style={{height: '97%'}}>
+                  {/*  And here the other too */}
+                  <RefreshRounded id="shuffle-cards" onClick={onClickShuffle} alt="Shuffle all the cards"/>
+                  <Box position="relative" className="card-position">
+                    { Cards }
+                  </Box>
+                  <Box position="relative" className="message-position">
+                    { Messages }
+                  </Box>
+                </Grid>
+                <Grid item xs={3}>
+                  <Box id="pos1" className="card-position" />
+                  <Box id="mes1" className="message-position" />
+                </Grid>
+                <Grid item xs={3}>
+                  <Box id="pos2" className="card-position" />
+                  <Box id="mes2" className="message-position" />
+                </Grid>
+                <Grid item xs={3}>
+                  <Box id="pos3" className="card-position" />
+                  <Box id="mes3" className="message-position" />
+                </Grid>
+                <ExpandMoreRounded id="expand-more" onClick={onExpandClick}/>
+                <img id="paypal-button" src={paypalButton} alt="paypal" />
+              </>)}
+          </Grid> 
+        </Table>
+        <Info />
+      </Layout>
+    </ThemeProvider>
   )
   
 }
