@@ -640,6 +640,14 @@ pre tt:after {
   animation: arrow-rotate 1s infinite;
 }
 
+#paypal-button {
+  position: absolute;
+  bottom: -1rem;
+  right: 5vw;
+  width:8%;
+  cursor: pointer;
+}
+
 #expand-more {
   position: absolute;
   bottom: -1rem;

@@ -9,6 +9,7 @@ import Card from "../components/card";
 import cardBack from "../../static/1m.jpg";
 import ExpandMoreRounded from '@material-ui/icons/ExpandMoreRounded';
 import RefreshRounded from '@material-ui/icons/RefreshRounded';
+import paypalButton from "../images/paypal_button.png";
 
 function IndexPage(props) {
   const [shuffledTimes, setShuffle] = useState(0);
@@ -205,6 +206,7 @@ function IndexPage(props) {
                 <Box id="mes3" className="message-position" />
               </Grid>
               <ExpandMoreRounded id="expand-more" onClick={onExpandClick}/>
+              <img id="paypal-button" src={paypalButton} alt="paypal" />
             </>)}
         </Grid> 
       </Table>
