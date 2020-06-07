@@ -56,7 +56,7 @@ function IndexPage(props) {
     imageList.push(i.toString() + '.jpg');
     imageList.push(i.toString() + 'm.jpg');
   }
-  preloadImages(["url1.jpg", "url2.jpg", "url3.jpg"]);
+  preloadImages(imageList);
 
   const shuffle = (a) => {
       var j, x, i;
@@ -226,21 +226,7 @@ function IndexPage(props) {
     variables.marginVertical = (window.innerWidth - cardSizes.cardWidth) / 2.8;
     cardSizes.marginVertical = variables.marginVertical;
     return cardSizes;
-  } 
-
-  // Inside this call I decide if show the vertial view or the large horizontal view
-  const sizes = getCardSizes();
-  
-  let Cards = [], Messages = [];
-  let i;
-  for (i = 1; i <= variables.numCards; i++) {
-    Cards.push(<Card key={i} img={`${i}.jpg`} onCardClick={onCardClick} variant="main" isVerticalScreen={variables.isVerticalScreen} width={sizes.cardWidth} height={sizes.cardHeight}/>)
-    Messages.push(<Card key={i} img={`${i}m.jpg`} onCardClick={onCardClick} variant="message" width={sizes.messageWidth} height={sizes.messageHeight} />)
   }
-  variables.cards = Cards;
-  shuffle(Cards);
-  shuffle(Messages);
-  // card-main' : 'card-message
 
   // Triggered on window.resize, it uses the max available height as base, and from there if the max widht is enoght just take the proportional widht, otherwise, reduce the heigh 
   // to adjust it to the max available width. It wait a second before to all this job.
@@ -273,6 +259,17 @@ function IndexPage(props) {
       }, 1000);
     }
   }
+
+  // Inside this call I decide if show the vertial view or the large horizontal view
+  const sizes = getCardSizes();
+  let Cards = [], Messages = [];
+  for (let i = 1; i <= variables.numCards; i++) {
+    Cards.push(<Card key={i} img={`${i}.jpg`} onCardClick={onCardClick} variant="main" isVerticalScreen={variables.isVerticalScreen} width={sizes.cardWidth} height={sizes.cardHeight}/>)
+    Messages.push(<Card key={i} img={`${i}m.jpg`} onCardClick={onCardClick} variant="message" width={sizes.messageWidth} height={sizes.messageHeight} />)
+  }
+  variables.cards = Cards;
+  shuffle(Cards);
+  shuffle(Messages);
 
   //  When resizing page, refresh the page so the height and widht are calculated again
   window.addEventListener("resize", resizeCards);

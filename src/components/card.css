@@ -35,11 +35,6 @@
   background: linear-gradient(to right, rgb(255, 255, 255, 0) 0%,rgb(109, 109, 109) 100%);
   transition: opacity 0.4s linear;
 }
-/* 
-.card-main {
-  height: 22.5rem;
-  width: 16.2rem;
-} */
 
 .card-main {
   height: 100%;
