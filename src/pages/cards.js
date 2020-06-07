@@ -6,7 +6,6 @@ import Table from "../components/table";
 import Info from "../components/info";
 import SEO from "../components/seo";
 import Card from "../components/card";
-import ModalResize from "../components/modalResize";
 import cardBack from "../../static/1m.jpg";
 import ExpandMoreRounded from '@material-ui/icons/ExpandMoreRounded';
 import RefreshRounded from '@material-ui/icons/RefreshRounded';
@@ -27,7 +26,8 @@ function IndexPage(props) {
     movedCardNodes: [],
     cardsBlocked: false,
     reloading: false,
-    referenceWidht: window.innerWidth
+    referenceWidht: window.innerWidth,
+    lastViewStyle: null, // To know when the use changes from a vertical view to an horizontal view
   }
 
   const shuffle = (a) => {
@@ -91,9 +91,11 @@ function IndexPage(props) {
   // This function moves the card to one of the three possitions in the grid
   const moveCard = (cardNode, actionType, destination) => {
     const position = destination.getBoundingClientRect()
+    console.log(position);
     const timeTransition = variables[actionType] * 1.4;
     cardNode.style.transition = `left ${timeTransition}s , box-shadow ${timeTransition / 2}s`;
-    cardNode.style.left = position.left + 'px';
+    // I don't know yet why I get the left bigger than it should be, I'm removing a EM to adjust it a little.
+    cardNode.style.left = position.left - 18 + 'px';
     cardNode.classList.add("card-transition-shadow")
     cardNode.dataset.cardState = 'moved';
     cardNode.dataset.cardTransition = timeTransition;
@@ -165,28 +167,47 @@ function IndexPage(props) {
       messageHeight: 0,
       messageWidth: 0
     };
-
     if (window.innerHeight >= window.innerWidth) {
-      // pass
+      if (variables.lastViewStyle === null) {
+        variables.lastViewStyle = 'vertical';
+      } else if (variables.lastViewStyle != 'vertical') { // reload when changing from vertical to horizantal and viceversa
+        window.location.reload();
+      }
+      variables.isVerticalScreen = true;
+      cardSizes = {
+        cardHeight: '100%',
+        cardWidth: '100%',
+        messageHeight: '100%',
+        messageWidth: '100%'
+      };
     } else {
+      if (variables.lastViewStyle === null) {
+        variables.lastViewStyle = 'horizontal';
+      } else if (variables.lastViewStyle != 'horizontal') { // reload when changing from vertical to horizantal and viceversa
+        window.location.reload();
+      }
+      variables.isVerticalScreen = false;
       cardSizes.cardHeight = window.innerHeight / 2;
       cardSizes.cardWidth = cardSizes.cardHeight / 1.39;
       const maxCardWidht = window.innerWidth / 4.9;
       if (cardSizes.cardWidth > maxCardWidht) {
-        cardSizes.cardHeight = cardSizes.cardHeight * (maxCardWidht / cardSizes.cardWidth);
-        cardSizes.cardWidth = maxCardWidht;
+        cardSizes.cardHeight = (cardSizes.cardHeight * (maxCardWidht / cardSizes.cardWidth)).toString() + "px";
+        cardSizes.cardWidth = maxCardWidht.toString() + "px";
+      } else {
+        cardSizes.cardHeight = cardSizes.cardHeight.toString() + "px"
+        cardSizes.cardWidth = cardSizes.cardWidth.toString() + "px"
       }
-      cardSizes.messageHeight = cardSizes.cardHeight / 4;
-      cardSizes.messageWidth = cardSizes.cardWidth;
+      cardSizes.messageHeight = (parseFloat(cardSizes.cardHeight) / 4).toString() + "px";
+      cardSizes.messageWidth = parseFloat(cardSizes.cardWidth).toString() + "px";
+      variables.isVerticalScreen = false;
+      
     }
+    console.log(cardSizes);
     return cardSizes;
   } 
 
+  // Inside this call I decide if show the vertial view or the large horizontal view
   const sizes = getCardSizes();
-
-  if (window.innerHeight >= window.innerWidth) {
-    variables.isVerticalScreen = true;
-  }
   
   let Cards = [], Messages = [];
   let i;
@@ -199,6 +220,8 @@ function IndexPage(props) {
   shuffle(Messages);
   // card-main' : 'card-message
 
+  // Triggered on window.resize, it uses the max available height as base, and from there if the max widht is enoght just take the proportional widht, otherwise, reduce the heigh 
+  // to adjust it to the max available width. It wait a second before to all this job.
   const resizeCards = () => {
     if (variables.reloading === false) {
       variables.reloading = true;
@@ -207,14 +230,14 @@ function IndexPage(props) {
         const cardsMessage = document.getElementsByClassName('card-message');
         const sizes = getCardSizes();
         for (let card of cardsMain) {
-          card.style.width = sizes.cardWidth.toString() + "px";
-          card.style.height = sizes.cardHeight.toString() + "px";
+          card.style.width = sizes.cardWidth;
+          card.style.height = sizes.cardHeight;
           if (card.style.left && window.innerWidth != variables.referenceWidht) {
             card.style.left = (parseFloat(card.style.left) + ((window.innerWidth - variables.referenceWidht) / 3)).toString() + 'px';
           }
         }for (let card of cardsMessage) {
-          card.style.width = sizes.messageWidth.toString() + "px";
-          card.style.height = sizes.messageHeight.toString() + "px";
+          card.style.width = sizes.messageWidth;
+          card.style.height = sizes.messageHeight;
           if (card.style.left && window.innerWidth != variables.referenceWidht) {
             card.style.left = (parseFloat(card.style.left) + ((window.innerWidth - variables.referenceWidht) / 3)).toString() + 'px';
           }
