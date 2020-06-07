@@ -16,7 +16,7 @@ import theme from "../styles/typo_theme";
 
 function IndexPage(props) {
   const [shuffledTimes, setShuffle] = useState(0);
-  let variables = {
+  const initialVariables = {
     numCards: 10,
     cardAction: 1,
     messageAction: 1,
@@ -30,8 +30,10 @@ function IndexPage(props) {
     lastViewStyle: null, // To know when the use changes from a vertical view to an horizontal view
     marginVertical: 0,
   }
+  let variables = initialVariables;
 
   // This is used to pre-cache all the images used in the images, so when they are flipped the image 'behind' appear quickly
+  // TODO: This can be done better, preload just thoes that has been moved, and for vertical view, preload while the second of flipping the card
   function preloadImages(array) {
     if (!preloadImages.list) {
         preloadImages.list = [];
@@ -70,19 +72,7 @@ function IndexPage(props) {
   }
 
   const _restartVariables = () => {
-    variables = {
-      numCards: 5,
-      cardAction: 1,
-      messageAction: 1,
-      finishCardAction: false,
-      finishMessageAction: false,
-      cards: null,
-      movedCardNodes: [],
-      cardsBlocked: false,
-      isVerticalScreen: false,
-      reloading: false,
-      referenceWidht: window.innerWidth
-    }
+    variables = initialVariables;
   }
 
   // Moves the cards to their original position and then shuffle the deck
@@ -209,6 +199,7 @@ function IndexPage(props) {
     if (variables.lastViewStyle === null) {
       variables.lastViewStyle = viewType;
     } else if (variables.lastViewStyle != viewType) { // reload when changing from vertical to horizantal and viceversa
+      alert(viewType + " " + variables.lastViewStyle)
       window.location.reload();
     }
     // Otherwise, just apply the new sizes for cards
