@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Layout from "../components/layout";
@@ -6,6 +6,7 @@ import Table from "../components/table";
 import Info from "../components/info";
 import SEO from "../components/seo";
 import Card from "../components/card";
+import ModalResize from "../components/modalResize";
 import cardBack from "../../static/1m.jpg";
 import ExpandMoreRounded from '@material-ui/icons/ExpandMoreRounded';
 import RefreshRounded from '@material-ui/icons/RefreshRounded';
@@ -25,8 +26,10 @@ function IndexPage(props) {
     cards: null,
     movedCardNodes: [],
     cardsBlocked: false,
+    reloading: false,
+    referenceWidht: window.innerWidth
   }
-  
+
   const shuffle = (a) => {
       var j, x, i;
       for (i = a.length - 1; i > 0; i--) {
@@ -49,6 +52,8 @@ function IndexPage(props) {
       movedCardNodes: [],
       cardsBlocked: false,
       isVerticalScreen: false,
+      reloading: false,
+      referenceWidht: window.innerWidth
     }
   }
 
@@ -111,7 +116,7 @@ function IndexPage(props) {
     setTimeout(() => {
       card.firstElementChild.classList.remove('card-transition-flip');
       card.firstElementChild.firstElementChild.src = card.id;
-      card.firstElementChild.style.width = cardOriginalWidth + 'px';
+      card.firstElementChild.style.width = '100%';
       card.firstElementChild.children[1].style.opacity = 0;
     }, 0.4 * 1000);
     card.dataset.cardState = 'flipped';
@@ -153,24 +158,81 @@ function IndexPage(props) {
   const onExpandClick = () => {
     window.scrollTo({top: document.getElementById('all-cards-box').clientHeight / 1.2, left: 0, behavior: 'smooth'});
   }
+  const getCardSizes = () => {
+    let cardSizes = {
+      cardHeight: 0,
+      cardWidth: 0,
+      messageHeight: 0,
+      messageWidth: 0
+    };
+
+    if (window.innerHeight >= window.innerWidth) {
+      // pass
+    } else {
+      cardSizes.cardHeight = window.innerHeight / 2;
+      cardSizes.cardWidth = cardSizes.cardHeight / 1.39;
+      const maxCardWidht = window.innerWidth / 4.9;
+      if (cardSizes.cardWidth > maxCardWidht) {
+        cardSizes.cardHeight = cardSizes.cardHeight * (maxCardWidht / cardSizes.cardWidth);
+        cardSizes.cardWidth = maxCardWidht;
+      }
+      cardSizes.messageHeight = cardSizes.cardHeight / 4;
+      cardSizes.messageWidth = cardSizes.cardWidth;
+    }
+    return cardSizes;
+  } 
+
+  const sizes = getCardSizes();
 
   if (window.innerHeight >= window.innerWidth) {
     variables.isVerticalScreen = true;
   }
+  
   let Cards = [], Messages = [];
   let i;
   for (i = 1; i <= variables.numCards; i++) {
-    Cards.push(<Card key={i} img={`${i}.jpg`} onCardClick={onCardClick} variant="main" isVerticalScreen={variables.isVerticalScreen}/>)
-    Messages.push(<Card key={i} img={`${i}m.jpg`} onCardClick={onCardClick} variant="message" />)
+    Cards.push(<Card key={i} img={`${i}.jpg`} onCardClick={onCardClick} variant="main" isVerticalScreen={variables.isVerticalScreen} width={sizes.cardWidth} height={sizes.cardHeight}/>)
+    Messages.push(<Card key={i} img={`${i}m.jpg`} onCardClick={onCardClick} variant="message" width={sizes.messageWidth} height={sizes.messageHeight} />)
   }
   variables.cards = Cards;
   shuffle(Cards);
   shuffle(Messages);
-  
+  // card-main' : 'card-message
+
+  const resizeCards = () => {
+    if (variables.reloading === false) {
+      variables.reloading = true;
+      setTimeout(() => {
+        const cardsMain = document.getElementsByClassName('card-main');
+        const cardsMessage = document.getElementsByClassName('card-message');
+        const sizes = getCardSizes();
+        for (let card of cardsMain) {
+          card.style.width = sizes.cardWidth.toString() + "px";
+          card.style.height = sizes.cardHeight.toString() + "px";
+          if (card.style.left && window.innerWidth != variables.referenceWidht) {
+            card.style.left = (parseFloat(card.style.left) + ((window.innerWidth - variables.referenceWidht) / 3)).toString() + 'px';
+          }
+        }for (let card of cardsMessage) {
+          card.style.width = sizes.messageWidth.toString() + "px";
+          card.style.height = sizes.messageHeight.toString() + "px";
+          if (card.style.left && window.innerWidth != variables.referenceWidht) {
+            card.style.left = (parseFloat(card.style.left) + ((window.innerWidth - variables.referenceWidht) / 3)).toString() + 'px';
+          }
+        }
+        variables.referenceWidht = window.innerWidth;
+        variables.reloading = false;
+      }, 1000);
+    }
+  }
+
+  //  When resizing page, refresh the page so the height and widht are calculated again
+  window.addEventListener("resize", resizeCards);
+
   return (
     <ThemeProvider theme={ theme }>
       <Layout>
         <SEO title="Home" spacing={4} />
+        {/* <ModalResize /> */}
         <Table>
           <Grid container justify="center" className="card-table">
             {variables.isVerticalScreen === true ? 

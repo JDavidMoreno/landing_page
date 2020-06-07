@@ -15,7 +15,9 @@ function Card(props) {
   }
 
   const styles = {
-    transform: `rotate(${get_rotation()}deg)`
+    transform: `rotate(${get_rotation()}deg)`,
+    width: props.width,
+    height: props.height
   }
   
   return (
