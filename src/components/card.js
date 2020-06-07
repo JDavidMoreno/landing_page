@@ -17,8 +17,10 @@ function Card(props) {
   const styles = {
     transform: `rotate(${get_rotation()}deg)`,
     width: props.width,
-    height: props.height
+    height: props.height,
+    // marginLeft: window.innerWidth - props.width + "px",
   }
+  console.log(props.width)
   
   return (
         <Box id={props.img} draggable="true" onClick={cardAction} className={'card ' + (props.variant === 'main' ? 'card-main' : 'card-message')} style={styles} >
