@@ -1,7 +1,7 @@
 import React from "react"
 import Box from '@material-ui/core/Box';
 import "./card.css";
-import cardBack from "../../static/1m.jpg";
+import cardBack from "../../../static/1m.jpg";
 
 function Card(props) {
 

@@ -1,16 +1,16 @@
 import React from "react";
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
-import Parallax from "../components/Parallax";
-import { Title } from "../components/Formatting";
+import Parallax from "../Parallax";
+import { Title } from "../Formatting";
 import Typography from "@material-ui/core/Typography";
-import FormContact from "../containers/FormContact";
-import Section from "../components/Section";
+import FormContact from "../../containers/FormContact";
+import Section from "../Section";
 import Link from '@material-ui/core/Link';
-import Footer from "../components/Footer";
+import Footer from "../Footer";
 import Instagram from '@material-ui/icons/Instagram';
-import artImage from "../../static/1.png";
-import all_cards from "../images/all_cards.png";
+import artImage from "../../../static/1.png";
+import all_cards from "../../images/all_cards.png";
 
 
 import "./info.css";

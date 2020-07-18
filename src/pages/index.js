@@ -20,7 +20,7 @@ import Emoji from "../components/Emoji";
 
 import theme from "../styles/typo_theme";
 import artImage from "../../static/1.png";
-import art from "../../static/2.jpg";
+import art from "../../static/2_portrait.jpg";
 import portrait from "../../static/portrait.jpg";
 import last from "../../static/last.jpg";
 import Instagram from '@material-ui/icons/Instagram';

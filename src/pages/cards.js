@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import Layout from "../components/layout";
-import Table from "../components/table";
-import Info from "../components/info";
-import SEO from "../components/seo";
-import Card from "../components/card";
+import Layout from "../components/cardComponents/layout";
+import Table from "../components/cardComponents/table";
+import Info from "../components/cardComponents/info";
+import SEO from "../components/cardComponents/seo";
+import Card from "../components/cardComponents/card";
 import cardBack from "../../static/1m.jpg";
 import ExpandMoreRounded from '@material-ui/icons/ExpandMoreRounded';
 import RefreshRounded from '@material-ui/icons/RefreshRounded';
